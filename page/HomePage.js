@@ -53,6 +53,13 @@ export default class HomePage extends Component<Props> {
             navigation.navigate('Top')
           }}
         />
+        <Button
+          title = {'go to Drawer Navigator'}
+          onPress = {()=>{
+            navigation.navigate('DrawerNav')
+          }}
+        />
+
       </View>
     );
   }
