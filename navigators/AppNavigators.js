@@ -175,7 +175,6 @@ const AppBottomNavigator = createBottomTabNavigator({
     activeTintColor:Platform.OS === 'ios'? '#e91e63':'#fff',
   }
 })
-// export const AppStackNavigator = createStackNavigator({
 
 const AppStack = createStackNavigator({
   HomePage: {
@@ -242,14 +241,6 @@ const AppStack = createStackNavigator({
 
 })
 
-// const AppStack = createStackNavigator({
-//   Home:{
-//     screen:HomePage,
-//   },
-//   Page1:{
-//     screen:Page1
-//   }
-// });
 const AuthStack = createStackNavigator({
   Login:{
     screen:Login,
