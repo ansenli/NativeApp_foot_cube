@@ -4,7 +4,8 @@ import {
   createBottomTabNavigator,
   createMaterialTopTabNavigator,
   createDrawerNavigator,
-  DrawerItems
+  DrawerItems,
+  createSwitchNavigator
 } from 'react-navigation'
 import React from 'react' // 切记只要我们用到react-native中的组件都需要导入React
 import { Button,Platform,ScrollView,SafeAreaView } from 'react-native'
@@ -14,8 +15,11 @@ import Page2 from '../page/Page2'
 import Page3 from '../page/Page3'
 import Page4 from '../page/Page4'
 import Page5 from '../page/Page5'
+import Login from '../page/Login'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+
+
 
 const DrawerNav = createDrawerNavigator({
   Page4:{
@@ -171,8 +175,9 @@ const AppBottomNavigator = createBottomTabNavigator({
     activeTintColor:Platform.OS === 'ios'? '#e91e63':'#fff',
   }
 })
+// export const AppStackNavigator = createStackNavigator({
 
-export const AppStackNavigator = createStackNavigator({
+const AppStack = createStackNavigator({
   HomePage: {
     screen: HomePage,
     navigationOptions:{
@@ -236,3 +241,30 @@ export const AppStackNavigator = createStackNavigator({
   }
 
 })
+
+// const AppStack = createStackNavigator({
+//   Home:{
+//     screen:HomePage,
+//   },
+//   Page1:{
+//     screen:Page1
+//   }
+// });
+const AuthStack = createStackNavigator({
+  Login:{
+    screen:Login,
+  }
+},{
+  navigationOptions:{
+    // header:null ,// 可以将header 设为null，来禁用StackNavigator 的 Navigation Bar
+  }
+});
+
+export const AppNavigators = createSwitchNavigator(
+  {
+    Auth:AuthStack,
+    App:AppStack
+  },{
+    initialRouteName:'Auth'
+  }
+)
